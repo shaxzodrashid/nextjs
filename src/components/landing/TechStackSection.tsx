@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent} from "@/components/ui/card";
 
 export default function TechStackSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -379,7 +379,7 @@ export default function TechStackSection() {
                 Ready to Build Something Amazing?
               </h3>
               <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-                Let's discuss how our technology expertise can bring your vision to life 
+                Let&apos;s discuss how our technology expertise can bring your vision to life 
                 with the perfect combination of performance, scalability, and innovation.
               </p>
               <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">

@@ -6,8 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 export default function TestimonialsSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   const testimonials = [
     {
@@ -46,7 +46,7 @@ export default function TestimonialsSection() {
       role: "Founder, InnovateLab",
       company: "InnovateLab",
       image: "/assets/client_4.jpg",
-      content: "From concept to deployment, every phase was handled with exceptional care and expertise. The team's ability to understand our vision and translate it into reality was remarkable. Highly recommended!",
+      content: "From concept to deployment, every phase was handled with exceptional care and expertise. The team&apos;s ability to understand our vision and translate it into reality was remarkable. Highly recommended!",
       rating: 5,
       companyLogo: "🔬"
     },
@@ -131,7 +131,7 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white dark:bg-gray-900 relative overflow-hidden">
+    <section ref={sectionRef} data-visible={isVisible} className="py-24 bg-white dark:bg-gray-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Animated Quote Marks */}
@@ -177,7 +177,7 @@ export default function TestimonialsSection() {
           </h2>
           
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what industry leaders and successful 
+            Don&apos;t just take our word for it. Here&apos;s what industry leaders and successful 
             entrepreneurs have to say about their experience working with us.
           </p>
         </div>
@@ -192,7 +192,7 @@ export default function TestimonialsSection() {
               onMouseEnter={() => setIsAutoPlaying(false)}
               onMouseLeave={() => setIsAutoPlaying(true)}
             >
-              {testimonials.map((testimonial, index) => (
+              {testimonials.map((testimonial) => (
                 <div key={testimonial.id} className="w-full flex-shrink-0">
                   <Card className="bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-blue-900/20 border-0 shadow-2xl mx-4">
                     <CardContent className="p-12">
@@ -229,7 +229,7 @@ export default function TestimonialsSection() {
                               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
                             </svg>
                             <p className="text-xl lg:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed italic pl-8">
-                              "{testimonial.content}"
+                              &quot;{testimonial.content}&quot;
                             </p>
                           </div>
 

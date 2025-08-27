@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -174,7 +174,7 @@ export default function Footer() {
               
               <p className="text-gray-300 mb-6 leading-relaxed">
                 We create exceptional digital experiences that drive business growth. 
-                From concept to deployment, we're your trusted partner in digital transformation.
+                From concept to deployment, we&apos;re your trusted partner in digital transformation.
               </p>
 
               {/* Newsletter Signup */}

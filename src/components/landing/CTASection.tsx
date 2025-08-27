@@ -9,7 +9,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export default function CTASection() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,6 +22,7 @@ export default function CTASection() {
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [recentSignups, setRecentSignups] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   const projectTypes = [
     { value: "website", label: "Website Development" },
@@ -39,7 +39,7 @@ export default function CTASection() {
     { value: "15k-50k", label: "$15,000 - $50,000" },
     { value: "50k-100k", label: "$50,000 - $100,000" },
     { value: "100k+", label: "$100,000+" },
-    { value: "discuss", label: "Let's Discuss" }
+    { value: "discuss", label: "Let&apos;s Discuss" }
   ];
 
   const timelines = [
@@ -136,7 +136,7 @@ export default function CTASection() {
           <div className="space-y-6">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                Let's Get to Know You
+                Let&apos;s Get to Know You
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
                 Tell us about yourself and your company
@@ -346,7 +346,7 @@ export default function CTASection() {
             Thank You!
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-            We've received your project details and will get back to you within 24 hours.
+            We&apos;ve received your project details and will get back to you within 24 hours.
           </p>
           
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl inline-block">
@@ -356,7 +356,7 @@ export default function CTASection() {
             <div className="space-y-3 text-left">
               <div className="flex items-center space-x-3">
                 <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-bold">1</div>
-                <span className="text-gray-600 dark:text-gray-300">We'll review your project requirements</span>
+                <span className="text-gray-600 dark:text-gray-300">We&apos;ll review your project requirements</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-bold">2</div>
@@ -374,7 +374,7 @@ export default function CTASection() {
   }
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 relative overflow-hidden">
+    <section ref={sectionRef} data-visible={isVisible} className="py-24 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Animated Background Video Effect */}
@@ -411,7 +411,7 @@ export default function CTASection() {
           </div>
           
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Let's Build Something
+            Let&apos;s Build Something
             <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent"> Amazing Together</span>
           </h2>
           
@@ -572,7 +572,7 @@ export default function CTASection() {
                 <div className="text-3xl mb-3">🛡️</div>
                 <h3 className="text-lg font-semibold mb-2">100% Satisfaction Guarantee</h3>
                 <p className="text-sm text-blue-200">
-                  Not happy with our work? We'll make it right or refund your money.
+                  Not happy with our work? We&apos;ll make it right or refund your money.
                 </p>
               </CardContent>
             </Card>

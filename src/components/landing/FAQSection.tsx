@@ -53,24 +53,24 @@ export default function FAQSection() {
       {
         id: "g4",
         question: "Can you work with our existing team and systems?",
-        answer: "Absolutely. We're experienced in collaborating with in-house teams and integrating with existing systems. We can work as an extension of your team, provide consultation services, or take full ownership of specific projects while maintaining seamless communication and integration."
+        answer: "Absolutely. We&apos;re experienced in collaborating with in-house teams and integrating with existing systems. We can work as an extension of your team, provide consultation services, or take full ownership of specific projects while maintaining seamless communication and integration."
       }
     ],
     pricing: [
       {
         id: "p1",
-        question: "What's included in each pricing tier?",
+        question: "What&apos;s included in each pricing tier?",
         answer: "Each tier is designed for different business needs. Starter includes basic features perfect for small projects, Professional adds advanced functionality and priority support for growing businesses, and Enterprise provides custom solutions with dedicated support for large organizations. All plans include SSL certificates, mobile responsiveness, and basic analytics."
       },
       {
         id: "p2",
         question: "Are there any hidden fees or additional costs?",
-        answer: "No hidden fees! Our pricing is completely transparent. The only additional costs might be third-party services you choose to integrate (like premium APIs or specialized hosting requirements), which we'll discuss upfront. All development, testing, and basic deployment costs are included in your plan."
+        answer: "No hidden fees! Our pricing is completely transparent. The only additional costs might be third-party services you choose to integrate (like premium APIs or specialized hosting requirements), which we&apos;ll discuss upfront. All development, testing, and basic deployment costs are included in your plan."
       },
       {
         id: "p3",
         question: "Can I upgrade or downgrade my plan anytime?",
-        answer: "Yes, you can change your plan at any time. Upgrades take effect immediately, while downgrades take effect at your next billing cycle. We'll help you migrate any additional features and ensure a smooth transition without any service interruption."
+        answer: "Yes, you can change your plan at any time. Upgrades take effect immediately, while downgrades take effect at your next billing cycle. We&apos;ll help you migrate any additional features and ensure a smooth transition without any service interruption."
       },
       {
         id: "p4",
@@ -189,12 +189,12 @@ export default function FAQSection() {
           
           <h2 className="text-4xl sm:text-5xl font-bold font-playfair text-gray-900 dark:text-white mb-6">
             Got Questions?
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> We've Got Answers</span>
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> We&apos;ve Got Answers</span>
           </h2>
           
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Find answers to the most common questions about our services, pricing, 
-            and technical capabilities. Can't find what you're looking for? Contact us directly.
+            and technical capabilities. Can&apos;t find what you&apos;re looking for? Contact us directly.
           </p>
         </div>
 

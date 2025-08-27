@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function TestimonialsSection() {
@@ -80,13 +81,15 @@ export default function TestimonialsSection() {
       { threshold: 0.3 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentSection = sectionRef.current;
+
+    if (currentSection) {
+      observer.observe(currentSection);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentSection) {
+        observer.unobserve(currentSection);
       }
     };
   }, []);
@@ -142,7 +145,7 @@ export default function TestimonialsSection() {
         </div>
         <div className="absolute bottom-1/4 right-1/4 text-purple-100 dark:text-purple-900 opacity-30 transform rotate-12">
           <svg className="w-24 h-24 animate-bounce" fill="currentColor" viewBox="0 0 24 24" style={{ animationDelay: '1s' }}>
-            <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.57-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-4v-10h10z"/>
+            <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.57-9 10.609l-.996-2.151c2.433.917-3.996 3.638-3.996 5.849h-4v-10h10z"/>
           </svg>
         </div>
 
@@ -170,14 +173,14 @@ export default function TestimonialsSection() {
             </svg>
             Client Testimonials
           </div>
-          
+
           <h2 className="text-4xl sm:text-5xl font-bold font-playfair text-gray-900 dark:text-white mb-6">
             What Our Clients
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Say About Us</span>
           </h2>
-          
+
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Don&apos;t just take our word for it. Here&apos;s what industry leaders and successful 
+            Don&apos;t just take our word for it. Here&apos;s what industry leaders and successful
             entrepreneurs have to say about their experience working with us.
           </p>
         </div>
@@ -186,7 +189,7 @@ export default function TestimonialsSection() {
         <div className="relative">
           {/* Main Testimonial Display */}
           <div className="relative overflow-hidden rounded-2xl">
-            <div 
+            <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
               onMouseEnter={() => setIsAutoPlaying(false)}
@@ -199,21 +202,15 @@ export default function TestimonialsSection() {
                       <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-8 lg:space-y-0 lg:space-x-12">
                         {/* Client Image */}
                         <div className="flex-shrink-0">
-                          <div className="relative">
-                            <img
+                          <div className="relative w-32 h-32">
+                            <Image
                               src={testimonial.image}
                               alt={`${testimonial.name} - ${testimonial.role}`}
-                              className="w-32 h-32 rounded-full object-cover shadow-xl border-4 border-white dark:border-gray-700"
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.style.display = 'none';
-                                target.nextElementSibling?.classList.remove('hidden');
-                              }}
+                              width={128}
+                              height={128}
+                              className="rounded-full object-cover shadow-xl border-4 border-white dark:border-gray-700"
                             />
-                            <div className="hidden w-32 h-32 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-4xl font-bold shadow-xl border-4 border-white dark:border-gray-700">
-                              {testimonial.name.split(' ').map(n => n[0]).join('')}
-                            </div>
-                            
+
                             {/* Company Logo Badge */}
                             <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-lg border-2 border-gray-100 dark:border-gray-600">
                               <span className="text-2xl">{testimonial.companyLogo}</span>
@@ -306,19 +303,13 @@ export default function TestimonialsSection() {
                   : 'hover:scale-105 opacity-70 hover:opacity-100'
               }`}
             >
-              <img
+              <Image
                 src={testimonial.image}
                 alt={testimonial.name}
+                width={150}
+                height={80}
                 className="w-full h-20 object-cover"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                  target.nextElementSibling?.classList.remove('hidden');
-                }}
               />
-              <div className="hidden w-full h-20 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold">
-                {testimonial.name.split(' ').map(n => n[0]).join('')}
-              </div>
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
               <div className="absolute bottom-1 left-1 right-1">
                 <div className="text-xs text-white font-medium truncate">
@@ -335,7 +326,7 @@ export default function TestimonialsSection() {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-20px); }
         }
-        
+
         .animate-float {
           animation: float 4s ease-in-out infinite;
         }

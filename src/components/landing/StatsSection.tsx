@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 
 export default function StatsSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -14,16 +14,16 @@ export default function StatsSection() {
   });
   const sectionRef = useRef<HTMLElement>(null);
 
-  const finalStats = {
+  const finalStats = useMemo(() => ({
     projects: 1250,
     clients: 850,
     satisfaction: 98,
     uptime: 99.9,
     awards: 25,
     countries: 45
-  };
+  }), []);
 
-  const statsData = [
+  const statsData = useMemo(() => [
     {
       key: 'projects',
       value: finalStats.projects,
@@ -96,7 +96,7 @@ export default function StatsSection() {
       ),
       color: 'from-emerald-500 to-blue-500'
     }
-  ];
+  ], [finalStats]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -108,13 +108,15 @@ export default function StatsSection() {
       { threshold: 0.3 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentSection = sectionRef.current;
+
+    if (currentSection) {
+      observer.observe(currentSection);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentSection) {
+        observer.unobserve(currentSection);
       }
     };
   }, []);
@@ -154,7 +156,7 @@ export default function StatsSection() {
 
     const timeout = setTimeout(animateStats, 500);
     return () => clearTimeout(timeout);
-  }, [isVisible]);
+  }, [isVisible, finalStats]);
 
   return (
     <section ref={sectionRef} className="py-24 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20 relative overflow-hidden">
@@ -163,7 +165,7 @@ export default function StatsSection() {
         {/* Animated Background Shapes */}
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-200 dark:bg-blue-800 rounded-full opacity-10 animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-purple-200 dark:bg-purple-800 rounded-full opacity-10 animate-bounce" style={{ animationDelay: '1s', animationDuration: '3s' }}></div>
-        
+
         {/* Grid Pattern */}
         <svg className="absolute inset-0 w-full h-full opacity-5" viewBox="0 0 100 100">
           <defs>
@@ -184,14 +186,14 @@ export default function StatsSection() {
             </svg>
             Proven Results
           </div>
-          
+
           <h2 className="text-4xl sm:text-5xl font-bold font-playfair text-gray-900 dark:text-white mb-6">
             Numbers That
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Speak Volumes</span>
           </h2>
-          
+
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Our track record of success is reflected in these impressive metrics, 
+            Our track record of success is reflected in these impressive metrics,
             showcasing our commitment to excellence and client satisfaction.
           </p>
         </div>
@@ -288,7 +290,7 @@ export default function StatsSection() {
             transform: translateY(0);
           }
         }
-        
+
         .animate-fade-in-up {
           animation: fade-in-up 0.6s ease-out forwards;
         }

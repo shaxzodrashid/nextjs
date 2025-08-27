@@ -132,13 +132,15 @@ export default function FAQSection() {
       { threshold: 0.2 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentSection = sectionRef.current;
+
+    if (currentSection) {
+      observer.observe(currentSection);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentSection) {
+        observer.unobserve(currentSection);
       }
     };
   }, []);
@@ -186,14 +188,14 @@ export default function FAQSection() {
             </svg>
             Frequently Asked Questions
           </div>
-          
+
           <h2 className="text-4xl sm:text-5xl font-bold font-playfair text-gray-900 dark:text-white mb-6">
             Got Questions?
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> We&apos;ve Got Answers</span>
           </h2>
-          
+
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Find answers to the most common questions about our services, pricing, 
+            Find answers to the most common questions about our services, pricing,
             and technical capabilities. Can&apos;t find what you&apos;re looking for? Contact us directly.
           </p>
         </div>
@@ -273,7 +275,7 @@ export default function FAQSection() {
                       </div>
                     </div>
                   </AccordionTrigger>
-                  
+
                   <AccordionContent className="px-6 pb-6">
                     <div className="flex items-start space-x-4">
                       <div className={`w-8 h-8 bg-gradient-to-r ${currentCategory.color} rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 opacity-70`}>
@@ -310,7 +312,7 @@ export default function FAQSection() {
               Still Have Questions?
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-              Our team is here to help! Get in touch with us for personalized answers 
+              Our team is here to help! Get in touch with us for personalized answers
               to your specific questions or to discuss your project requirements.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -330,7 +332,7 @@ export default function FAQSection() {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-15px); }
         }
-        
+
         .animate-float {
           animation: float 3s ease-in-out infinite;
         }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function FeaturesSection() {
@@ -126,14 +127,14 @@ export default function FeaturesSection() {
             </svg>
             Powerful Features
           </div>
-          
+
           <h2 className="text-4xl sm:text-5xl font-bold font-playfair text-gray-900 dark:text-white mb-6">
             Everything You Need to
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Succeed</span>
           </h2>
-          
+
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Our comprehensive suite of features is designed to empower your business 
+            Our comprehensive suite of features is designed to empower your business
             with cutting-edge technology and exceptional user experiences.
           </p>
         </div>
@@ -153,23 +154,15 @@ export default function FeaturesSection() {
             >
               <Card className="group h-full bg-white dark:bg-gray-800 border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden">
                 {/* Feature Image */}
-                <div className="relative overflow-hidden">
-                  <img
+                <div className="relative overflow-hidden h-48">
+                  <Image
                     src={feature.image}
                     alt={feature.description}
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      target.nextElementSibling?.classList.remove('hidden');
-                    }}
+                    layout="fill"
+                    objectFit="cover"
+                    className="transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="hidden absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center">
-                    <div className={`w-16 h-16 bg-gradient-to-r ${feature.color} rounded-full flex items-center justify-center text-white`}>
-                      {feature.icon}
-                    </div>
-                  </div>
-                  
+
                   {/* Overlay with Icon */}
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className={`w-16 h-16 bg-gradient-to-r ${feature.color} rounded-full flex items-center justify-center text-white transform scale-0 group-hover:scale-100 transition-transform duration-300`}>
@@ -193,7 +186,7 @@ export default function FeaturesSection() {
                   <CardDescription className="text-gray-600 dark:text-gray-300 leading-relaxed">
                     {feature.description}
                   </CardDescription>
-                  
+
                   {/* Learn More Link */}
                   <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <button className="text-blue-600 dark:text-blue-400 font-medium hover:underline flex items-center">

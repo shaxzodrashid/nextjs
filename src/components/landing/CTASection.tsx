@@ -58,13 +58,15 @@ export default function CTASection() {
       { threshold: 0.2 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentSection = sectionRef.current;
+
+    if (currentSection) {
+      observer.observe(currentSection);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentSection) {
+        observer.unobserve(currentSection);
       }
     };
   }, []);
@@ -142,7 +144,7 @@ export default function CTASection() {
                 Tell us about yourself and your company
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -156,7 +158,7 @@ export default function CTASection() {
                   className="w-full"
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Email Address *
@@ -170,7 +172,7 @@ export default function CTASection() {
                 />
               </div>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -184,7 +186,7 @@ export default function CTASection() {
                   className="w-full"
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Phone Number
@@ -212,7 +214,7 @@ export default function CTASection() {
                 Help us understand your project requirements
               </p>
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Project Type *
@@ -230,7 +232,7 @@ export default function CTASection() {
                 </SelectContent>
               </Select>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -249,7 +251,7 @@ export default function CTASection() {
                   </SelectContent>
                 </Select>
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Timeline *
@@ -282,7 +284,7 @@ export default function CTASection() {
                 Describe your project vision and requirements
               </p>
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Project Description *
@@ -295,7 +297,7 @@ export default function CTASection() {
                 className="w-full"
               />
             </div>
-            
+
             {/* Project Summary */}
             <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
               <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Project Summary</h4>
@@ -341,14 +343,14 @@ export default function CTASection() {
               </svg>
             </div>
           </div>
-          
+
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Thank You!
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
             We&apos;ve received your project details and will get back to you within 24 hours.
           </p>
-          
+
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl inline-block">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
               What happens next?
@@ -379,7 +381,7 @@ export default function CTASection() {
       <div className="absolute inset-0 overflow-hidden">
         {/* Animated Background Video Effect */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-indigo-600/20 animate-pulse"></div>
-        
+
         {/* Floating Particles */}
         {[...Array(20)].map((_, i) => (
           <div
@@ -409,14 +411,14 @@ export default function CTASection() {
             </svg>
             Ready to Start?
           </div>
-          
+
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
             Let&apos;s Build Something
             <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent"> Amazing Together</span>
           </h2>
-          
+
           <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-            Transform your vision into reality with our expert team. 
+            Transform your vision into reality with our expert team.
             Get started with a free consultation and detailed project proposal.
           </p>
         </div>
@@ -432,7 +434,7 @@ export default function CTASection() {
                 <CardDescription className="text-gray-600 dark:text-gray-300">
                   Step {currentStep} of 3 - {currentStep === 1 ? 'Personal Info' : currentStep === 2 ? 'Project Details' : 'Final Details'}
                 </CardDescription>
-                
+
                 {/* Progress Bar */}
                 <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-4">
                   <div
@@ -445,7 +447,7 @@ export default function CTASection() {
               <CardContent>
                 <form onSubmit={handleSubmit}>
                   {renderStep()}
-                  
+
                   {/* Navigation Buttons */}
                   <div className="flex justify-between mt-8">
                     <Button
@@ -457,7 +459,7 @@ export default function CTASection() {
                     >
                       Previous
                     </Button>
-                    
+
                     {currentStep < 3 ? (
                       <Button
                         type="button"
@@ -518,7 +520,7 @@ export default function CTASection() {
                       <div className="text-blue-200">hello@prolandingco.com</div>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -551,7 +553,7 @@ export default function CTASection() {
                       {850 + recentSignups}+ happy clients
                     </span>
                   </div>
-                  
+
                   <div className="text-sm text-blue-200">
                     <div className="flex items-center space-x-2 mb-2">
                       <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
@@ -585,7 +587,7 @@ export default function CTASection() {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-20px); }
         }
-        
+
         .animate-float {
           animation: float 3s ease-in-out infinite;
         }

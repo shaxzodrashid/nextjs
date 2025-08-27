@@ -102,13 +102,15 @@ export default function PricingSection() {
       { threshold: 0.2 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentSection = sectionRef.current;
+
+    if (currentSection) {
+      observer.observe(currentSection);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentSection) {
+        observer.unobserve(currentSection);
       }
     };
   }, []);
@@ -128,7 +130,7 @@ export default function PricingSection() {
         {/* Animated Background Shapes */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-200 dark:bg-blue-800 rounded-full opacity-5 animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-200 dark:bg-purple-800 rounded-full opacity-5 animate-bounce" style={{ animationDelay: '2s', animationDuration: '4s' }}></div>
-        
+
         {/* Grid Pattern */}
         <svg className="absolute inset-0 w-full h-full opacity-5" viewBox="0 0 100 100">
           <defs>
@@ -149,14 +151,14 @@ export default function PricingSection() {
             </svg>
             Transparent Pricing
           </div>
-          
+
           <h2 className="text-4xl sm:text-5xl font-bold font-playfair text-gray-900 dark:text-white mb-6">
             Choose Your
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Perfect Plan</span>
           </h2>
-          
+
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
-            Flexible pricing options designed to grow with your business. 
+            Flexible pricing options designed to grow with your business.
             No hidden fees, no surprises - just transparent, value-driven pricing.
           </p>
 
@@ -205,10 +207,10 @@ export default function PricingSection() {
               <Card className={`h-full bg-white dark:bg-gray-800 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform ${
                 hoveredCard === plan.id ? 'scale-105 -translate-y-2' : ''
               } ${plan.popular ? 'ring-2 ring-purple-500 dark:ring-purple-400' : ''} overflow-hidden relative`}>
-                
+
                 {/* Animated Background Gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${plan.color} opacity-0 hover:opacity-5 transition-opacity duration-500`}></div>
-                
+
                 <CardHeader className="text-center pb-8 relative">
                   {/* Icon */}
                   <div className={`w-16 h-16 bg-gradient-to-r ${plan.color} rounded-2xl flex items-center justify-center text-white mx-auto mb-6 transform transition-transform duration-300 ${
@@ -220,7 +222,7 @@ export default function PricingSection() {
                   <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                     {plan.name}
                   </CardTitle>
-                  
+
                   <CardDescription className="text-gray-600 dark:text-gray-300 mb-6">
                     {plan.description}
                   </CardDescription>
@@ -235,7 +237,7 @@ export default function PricingSection() {
                         /month
                       </span>
                     </div>
-                    
+
                     {isYearly && (
                       <div className="text-sm text-gray-500 dark:text-gray-400">
                         <span className="line-through">${plan.monthlyPrice}/month</span>
@@ -244,7 +246,7 @@ export default function PricingSection() {
                         </span>
                       </div>
                     )}
-                    
+
                     {isYearly && (
                       <div className="text-sm text-blue-600 dark:text-blue-400">
                         Billed annually (${getPrice(plan)})
@@ -310,7 +312,7 @@ export default function PricingSection() {
               Need a Custom Solution?
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-              We understand that every business is unique. Our team can create a tailored 
+              We understand that every business is unique. Our team can create a tailored
               solution that perfectly fits your specific requirements and budget.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

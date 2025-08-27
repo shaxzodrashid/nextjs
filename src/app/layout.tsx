@@ -1,20 +1,20 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap"
 });
 
-const playfair = Playfair_Display({ 
+const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap"
 });
 
-const jetbrains = JetBrains_Mono({ 
+const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
   display: "swap"
@@ -25,7 +25,11 @@ export const metadata: Metadata = {
   description: "Experience the future of web development with our comprehensive, professional landing page showcasing modern design, animations, and user experience.",
   keywords: "web development, modern design, professional landing page, animations, responsive design",
   authors: [{ name: "Professional Web Solutions" }],
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

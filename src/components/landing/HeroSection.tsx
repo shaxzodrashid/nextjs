@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 export default function HeroSection() {
@@ -9,27 +10,27 @@ export default function HeroSection() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
-  const texts = [
+  const texts = useMemo(() => [
     "Professional Web Solutions",
     "Modern Design Excellence",
     "Innovative User Experiences",
     "Future-Ready Applications"
-  ];
+  ], []);
 
   // Typewriter effect
   useEffect(() => {
     const timeout = setTimeout(() => {
       const fullText = texts[currentIndex];
-      
+
       if (!isDeleting) {
         setCurrentText(fullText.substring(0, currentText.length + 1));
-        
+
         if (currentText === fullText) {
           setTimeout(() => setIsDeleting(true), 2000);
         }
       } else {
         setCurrentText(fullText.substring(0, currentText.length - 1));
-        
+
         if (currentText === "") {
           setIsDeleting(false);
           setCurrentIndex((prev) => (prev + 1) % texts.length);
@@ -57,19 +58,18 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent dark:bg-transparent">
       {/* Background Image with Parallax */}
-      <div 
+      <div
         className="absolute inset-0 z-0"
         style={{ transform: `translateY(${scrollY * 0.5}px)` }}
       >
-        <img
+        <Image
           src="/assets/hero.jpg"
           alt="Professional modern workspace with clean design and natural lighting"
-          className="w-full h-full object-cover opacity-40 dark:opacity-50"
+          layout="fill"
+          objectFit="cover"
+          className="opacity-40 dark:opacity-50"
           style={{ filter: 'brightness(0.95) saturate(1.05)' }}
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.style.display = 'none';
-          }}
+          priority
         />
       </div>
 
@@ -127,9 +127,9 @@ export default function HeroSection() {
                 <span className="animate-pulse">|</span>
               </span>
             </h1>
-            
+
             <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Discover the perfect blend of cutting-edge technology, stunning design, 
+              Discover the perfect blend of cutting-edge technology, stunning design,
               and seamless user experience in our comprehensive web solutions.
             </p>
           </div>
@@ -146,7 +146,7 @@ export default function HeroSection() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m0 0l7-7" />
               </svg>
             </Button>
-            
+
             <Button
               variant="outline"
               size="lg"
@@ -188,7 +188,7 @@ export default function HeroSection() {
         >
           <span className="text-sm mb-2">Scroll to explore</span>
           <svg className="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m0 0l7-7" />
           </svg>
         </button>
       </div>

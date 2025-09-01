@@ -138,7 +138,7 @@ function ScrollToTopButton() {
 
   return (
     <button
-      className={`fixed bottom-8 right-8 z-50 p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition-all duration-300 transform ${
+      className={`fixed bottom-8 right-8 z-50 p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition-[transform,opacity,background-color] duration-300 transform ${
         isVisible ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
       }`}
       onClick={scrollToTop}

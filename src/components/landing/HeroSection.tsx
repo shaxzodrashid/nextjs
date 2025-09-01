@@ -43,9 +43,25 @@ export default function HeroSection() {
 
   // Parallax effect
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    let ticking = false;
+    let lastScrollY = 0;
+
+    const handleScroll = () => {
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(lastScrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const scrollToFeatures = () => {
@@ -65,9 +81,8 @@ export default function HeroSection() {
         <Image
           src="/assets/hero.jpg"
           alt="Professional modern workspace with clean design and natural lighting"
-          layout="fill"
-          objectFit="cover"
-          className="opacity-40 dark:opacity-50"
+          fill
+          className="object-cover opacity-40 dark:opacity-50"
           style={{ filter: 'brightness(0.95) saturate(1.05)' }}
           priority
         />
@@ -139,7 +154,7 @@ export default function HeroSection() {
             <Button
               onClick={scrollToFeatures}
               size="lg"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-[background-image,transform,box-shadow] duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
             >
               Explore Features
               <svg className="ml-2 w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,7 +165,7 @@ export default function HeroSection() {
             <Button
               variant="outline"
               size="lg"
-              className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+              className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 px-8 py-4 rounded-full text-lg font-semibold transition-[border-color,color,transform] duration-300 transform hover:scale-105"
             >
               Watch Demo
               <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -145,22 +145,21 @@ export default function FeaturesSection() {
             <div
               key={feature.id}
               data-card-id={feature.id}
-              className={`transform transition-all duration-700 ${
+              className={`transform transition-[transform,opacity] duration-700 ${
                 visibleCards.includes(feature.id)
                   ? 'translate-y-0 opacity-100'
                   : 'translate-y-16 opacity-0'
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <Card className="group h-full bg-white dark:bg-gray-800 border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden">
+              <Card className="group h-full bg-white dark:bg-gray-800 border-0 shadow-lg hover:shadow-2xl transition-[box-shadow,transform] duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden">
                 {/* Feature Image */}
                 <div className="relative overflow-hidden h-48">
                   <Image
                     src={feature.image}
                     alt={feature.description}
-                    layout="fill"
-                    objectFit="cover"
-                    className="transition-transform duration-500 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
 
                   {/* Overlay with Icon */}
@@ -210,7 +209,7 @@ export default function FeaturesSection() {
           <p className="text-gray-600 dark:text-gray-300 mb-6">
             Ready to experience these features in action?
           </p>
-          <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+          <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full font-semibold transition-[background-image,transform,box-shadow] duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
             Start Your Free Trial
           </button>
         </div>

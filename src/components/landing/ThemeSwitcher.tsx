@@ -18,7 +18,6 @@ const ThemeSwitcher = () => {
   const toggleTheme = (e: React.MouseEvent<HTMLButtonElement>) => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
 
-    // @ts-ignore
     if (!document.startViewTransition) {
       setTheme(newTheme);
       return;
@@ -30,7 +29,6 @@ const ThemeSwitcher = () => {
     document.documentElement.style.setProperty('--x', `${x}px`);
     document.documentElement.style.setProperty('--y', `${y}px`);
 
-    // @ts-ignore
     document.startViewTransition(() => {
       setTheme(newTheme);
     });

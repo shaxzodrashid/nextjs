@@ -121,29 +121,69 @@
   }
 }
 
-::view-transition-old(root) {
-  animation: exit-animation 0.5s ease-in-out;
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) {
+    animation: exit-animation 0.5s ease-in-out;
+  }
+
+  ::view-transition-new(root) {
+    animation: enter-animation 0.5s ease-in-out;
+  }
+
+  @keyframes exit-animation {
+    from {
+      clip-path: circle(100% at var(--x) var(--y));
+    }
+    to {
+      clip-path: circle(0% at var(--x) var(--y));
+    }
+  }
+
+  @keyframes enter-animation {
+    from {
+      clip-path: circle(0% at var(--x) var(--y));
+    }
+    to {
+      clip-path: circle(100% at var(--x) var(--y));
+    }
+  }
 }
 
-::view-transition-new(root) {
-  animation: enter-animation 0.5s ease-in-out;
+.theme-transition::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at top right, oklch(0.769 0.188 70.08), transparent 50%),
+    radial-gradient(circle at bottom left, oklch(0.6 0.118 184.704), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: -1;
 }
 
-@keyframes exit-animation {
+.dark .theme-transition::before {
+  background-image:
+    radial-gradient(ellipse at 50% 50%, hsla(0, 0%, 100%, 0.1) 0%, transparent 100%);
+  background-size: 3px 3px;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards, starfield 120s linear infinite;
+}
+
+@keyframes starfield {
   from {
-    clip-path: circle(100% at var(--x) var(--y));
+    background-position: 0 0;
   }
   to {
-    clip-path: circle(0% at var(--x) var(--y));
+    background-position: 0 1000px;
   }
 }
 
-@keyframes enter-animation {
-  from {
-    clip-path: circle(0% at var(--x) var(--y));
-  }
+@keyframes fadeIn {
   to {
-    clip-path: circle(100% at var(--x) var(--y));
+    opacity: 0.5;
   }
 }
 
+html:not(.dark) .theme-transition::before {
+  opacity: 1;
+}

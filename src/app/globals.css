@@ -120,3 +120,30 @@
     @apply bg-background text-foreground;
   }
 }
+
+::view-transition-old(root) {
+  animation: exit-animation 0.5s ease-in-out;
+}
+
+::view-transition-new(root) {
+  animation: enter-animation 0.5s ease-in-out;
+}
+
+@keyframes exit-animation {
+  from {
+    clip-path: circle(100% at var(--x) var(--y));
+  }
+  to {
+    clip-path: circle(0% at var(--x) var(--y));
+  }
+}
+
+@keyframes enter-animation {
+  from {
+    clip-path: circle(0% at var(--x) var(--y));
+  }
+  to {
+    clip-path: circle(100% at var(--x) var(--y));
+  }
+}
+

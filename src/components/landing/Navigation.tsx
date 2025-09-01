@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 interface NavigationProps {
   activeSection: string;
@@ -110,7 +111,8 @@ export default function Navigation({ activeSection }: NavigationProps) {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center space-x-4">
+            <ThemeSwitcher />
             <Button
               onClick={() => scrollToSection("cta")}
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
@@ -178,6 +180,7 @@ export default function Navigation({ activeSection }: NavigationProps) {
             </button>
           ))}
           <div className="pt-2">
+            <ThemeSwitcher />
             <Button
               onClick={() => scrollToSection("cta")}
               className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-full transition-all duration-300"

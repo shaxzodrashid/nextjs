@@ -72,13 +72,14 @@ export default function TechStackSection() {
       { threshold: 0.2 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const node = sectionRef.current; // ✅ copy ref into local variable
+    if (node) {
+      observer.observe(node);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (node) {
+        observer.unobserve(node); // ✅ cleanup uses the same node
       }
     };
   }, []);
